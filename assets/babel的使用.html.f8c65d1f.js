@@ -1,0 +1,1 @@
+const e={key:"v-158ed2c3",path:"/front-end/es6/babel%E7%9A%84%E4%BD%BF%E7%94%A8.html",title:"babel\u7684\u4F7F\u7528",lang:"zh-CN",frontmatter:{lang:"zh-CN",title:"babel\u7684\u4F7F\u7528"},excerpt:"",headers:[],git:{},filePathRelative:"front-end/es6/babel\u7684\u4F7F\u7528.md"};export{e as data};

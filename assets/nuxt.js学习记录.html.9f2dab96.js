@@ -1,0 +1,1 @@
+const t={key:"v-4b80cdad",path:"/front-end/vue/nuxt.js%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95.html",title:"nuxt.js\u5B66\u4E60\u8BB0\u5F55",lang:"zh-CN",frontmatter:{lang:"zh-CN",title:"nuxt.js\u5B66\u4E60\u8BB0\u5F55"},excerpt:"",headers:[],git:{},filePathRelative:"front-end/vue/nuxt.js\u5B66\u4E60\u8BB0\u5F55.md"};export{t as data};

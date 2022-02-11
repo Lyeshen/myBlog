@@ -1,0 +1,1 @@
+const e={key:"v-2ebea979",path:"/front-end/css/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80-rem.html",title:"\u79FB\u52A8\u7AEF",lang:"zh-CN",frontmatter:{lang:"zh-CN",title:"\u79FB\u52A8\u7AEF"},excerpt:"",headers:[],git:{},filePathRelative:"front-end/css/\u79FB\u52A8\u7AEF\u5C4F\u5E55\u9002\u914D\u5E03\u5C40-rem.md"};export{e as data};

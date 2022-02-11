@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.35">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/images/logo.png"><title>swiper的animation动画实现方式 | Lyeshen's blog</title><meta name="description" content="解决问题大多数都很容易；找到问题出在哪里却很难。">
+    <link rel="modulepreload" href="myBlogassets/app.06db0539.js"><link rel="modulepreload" href="myBlogassets/swiper的animation动画实现方式.html.e3c40aed.js"><link rel="modulepreload" href="myBlogassets/swiper的animation动画实现方式.html.6515e5b5.js"><link rel="modulepreload" href="myBlogassets/plugin-vue_export-helper.21dcd24c.js">
+    <link rel="stylesheet" href="myBlogassets/style.ccbb1707.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header ref_key="navbar" class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/myBlog" class=""><img class="logo" src="myBlogimages/logo.png" alt="Lyeshen&#39;s blog"><span class="site-name can-hide">Lyeshen&#39;s blog</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/myBlog" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="前端"><span class="title">前端</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="前端"><span class="title">前端</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/myBlog/front-end/html/" class="" aria-label="HTML"><!--[--><!--]--> HTML <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/css/" class="" aria-label="CSS"><!--[--><!--]--> CSS <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/jquery/" class="" aria-label="jQuery"><!--[--><!--]--> jQuery <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/vue/" class="" aria-label="Vue"><!--[--><!--]--> Vue <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/node/" class="" aria-label="node.js"><!--[--><!--]--> node.js <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/webpack/" class="" aria-label="webpack"><!--[--><!--]--> webpack <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/es6/" class="" aria-label="es6"><!--[--><!--]--> es6 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/swiper/" class="router-link-active" aria-label="Swiper"><!--[--><!--]--> Swiper <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a href="/myBlog/git/" class="" aria-label="Git"><!--[--><!--]--> Git <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="CMS"><span class="title">CMS</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="CMS"><span class="title">CMS</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/myBlog/cms/wordpress/" class="" aria-label="WordPress"><!--[--><!--]--> WordPress <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/cms/pbootcms/" class="" aria-label="pbootcms"><!--[--><!--]--> pbootcms <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="搜索" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/myBlog" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="前端"><span class="title">前端</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="前端"><span class="title">前端</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/myBlog/front-end/html/" class="" aria-label="HTML"><!--[--><!--]--> HTML <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/css/" class="" aria-label="CSS"><!--[--><!--]--> CSS <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/jquery/" class="" aria-label="jQuery"><!--[--><!--]--> jQuery <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/vue/" class="" aria-label="Vue"><!--[--><!--]--> Vue <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/node/" class="" aria-label="node.js"><!--[--><!--]--> node.js <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/webpack/" class="" aria-label="webpack"><!--[--><!--]--> webpack <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/es6/" class="" aria-label="es6"><!--[--><!--]--> es6 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/front-end/swiper/" class="router-link-active" aria-label="Swiper"><!--[--><!--]--> Swiper <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><a href="/myBlog/git/" class="" aria-label="Git"><!--[--><!--]--> Git <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="CMS"><span class="title">CMS</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="CMS"><span class="title">CMS</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/myBlog/cms/wordpress/" class="" aria-label="WordPress"><!--[--><!--]--> WordPress <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/myBlog/cms/pbootcms/" class="" aria-label="pbootcms"><!--[--><!--]--> pbootcms <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading active">Swiper <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/myBlog/front-end/swiper/swiper%E7%9A%84animation%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="swiper的animation动画实现方式"><!--[--><!--]--> swiper的animation动画实现方式 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="swiper的animation动画实现方式" tabindex="-1"><a class="header-anchor" href="#swiper的animation动画实现方式" aria-hidden="true">#</a> swiper的animation动画实现方式</h1><p>1.竖屏全屏轮播效果：</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&lt;head&gt;内：
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/swiper.min.css&quot;&gt;
+
+&lt;script src=&quot;js/jquery-1.12.3.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;js/swiper.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;body&gt;内：
+
+&lt;div class=&quot;swiper-container&quot;&gt;
+    &lt;div class=&quot;swiper-wrapper&quot;&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 1&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 2&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 3&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;内：
+
+var mySwiper = new Swiper (&#39;.swiper-container&#39;, {
+ direction: &#39;vertical&#39;,
+})
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>2.横屏效果： 只更改js为：</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>var mySwiper = new Swiper (’.swiper-container’, {
+})
+//这是最简单的全屏轮播。许多属性没写，想写的话可以看api官网
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>3.横竖屏交叉的全屏轮播：</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&lt;head&gt;内的引用一致；
+
+&lt;body&gt;内：
+
+ &lt;!-- Swiper --&gt;
+  &lt;div class=&quot;swiper-container swiper-container-h&quot;&gt;
+    &lt;div class=&quot;swiper-wrapper&quot;&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 1&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 2&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 3&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide4&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;
+       &lt;div class=&quot;swiper-container swiper-container-v&quot;&gt;
+        &lt;div class=&quot;swiper-wrapper&quot;&gt;
+         &lt;div class=&quot;swiper-slide&quot;&gt;竖向内容一&lt;/div&gt;
+         &lt;div class=&quot;swiper-slide&quot;&gt;竖向内容二&lt;/div&gt;
+         &lt;div class=&quot;swiper-slide&quot;&gt;竖向内容三&lt;/div&gt;
+         &lt;div class=&quot;swiper-slide&quot;&gt;竖向内容四&lt;/div&gt;
+        &lt;/div&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 6&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 7&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 8&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 9&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;Slide 10&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Add Pagination --&gt;
+  &lt;!--  &lt;div class=&quot;swiper-pagination&quot;&gt;&lt;/div&gt;--&gt;
+  &lt;/div&gt;
+
+&lt;script&gt;内：
+
+var mySwiper = new Swiper (&#39;.swiper-container-v&#39;, {
+ direction: &#39;vertical&#39;,
+})
+   var Swiper = new Swiper (&#39;.swiper-container-h&#39;, {
+})
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><p>4.普通的竖屏轮播加animation动画</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&lt;head&gt;内：
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/swiper.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/animate.min.css&quot;&gt;
+    &lt;style&gt;
+		.swiper-container {
+		    width: 600px;
+		    height: 300px;
+		    background-color: red;
+		}
+	&lt;/style&gt;
+
+  	&lt;script src=&quot;js/jquery-1.12.3.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/swiper.jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/swiper.animate1.0.2.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;body&gt;内：
+
+	&lt;div class=&quot;swiper-container&quot;&gt;
+	    &lt;div class=&quot;swiper-wrapper&quot;&gt;
+	        &lt;div class=&quot;swiper-slide&quot;&gt;
+				&lt;p class=&quot;ani aa&quot; swiper-animate-effect=&quot;fadeInUp&quot; swiper-animate-duration=&quot;0.5s&quot; swiper-animate-delay=&quot;0.3s&quot;&gt;内容1&lt;/p&gt;
+	        &lt;/div&gt;
+	        &lt;div class=&quot;swiper-slide&quot;&gt;
+				&lt;p class=&quot;ani bb&quot; swiper-animate-effect=&quot;fadeInUp&quot; swiper-animate-duration=&quot;0.5s&quot; swiper-animate-delay=&quot;0.3s&quot; style=&quot;    visibility: visible;&quot;&gt;内容2&lt;/p&gt;
+	        &lt;/div&gt;
+	        &lt;div class=&quot;swiper-slide&quot;&gt;
+				&lt;p class=&quot;ani cc&quot; swiper-animate-effect=&quot;fadeInUp&quot; swiper-animate-duration=&quot;0.5s&quot; swiper-animate-delay=&quot;0.3s&quot; style=&quot;    visibility: visible;&quot;&gt;内容3&lt;/p&gt;
+	        &lt;/div&gt;
+	    &lt;/div&gt;
+	&lt;/div&gt;
+&lt;!--effect:效果  duration：持续时间  delay：等待时间--&gt;
+
+&lt;script&gt;内：
+
+ //Swiper3.x、Swiper2.x
+//var mySwiper = new Swiper (&#39;.swiper-container&#39;, {
+//  onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+//    swiperAnimateCache(swiper); //隐藏动画元素
+//    swiperAnimate(swiper); //初始化完成开始动画
+//  },
+//  onSlideChangeEnd: function(swiper){
+//    swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+//  }
+//})
+
+//Swiper4.x
+var mySwiper1 = new Swiper (&#39;.swiper-container&#39;, {
+    direction: &#39;vertical&#39;,//竖屏
+    on:{
+      init: function(){
+        swiperAnimateCache(this); //隐藏动画元素
+        swiperAnimate(this); //初始化完成开始动画
+      },
+      slideChangeTransitionEnd: function(){
+        swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+      }
+    }
+})
+
+//横屏与竖屏基本一致，就去掉js中 direction:&#39;vertical&#39;,一句就可以。
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br></div></div><p>5.竖屏可以有两次不同的动画</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&lt;head&gt;内：
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/swiper.min.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/animate.min.css&quot;&gt;
+
+  &lt;script src=&quot;js/jquery-1.12.3.min.js&quot;&gt;&lt;/script&gt;
+   &lt;!-- Swiper JS --&gt;
+  &lt;script src=&quot;js/swiper.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;js/swiper.animate1.0.2.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;body&gt;内：
+
+ &lt;div class=&quot;swiper-container&quot;&gt;
+    &lt;div class=&quot;swiper-wrapper&quot;&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;&lt;span class=&quot;ani&quot; data-slide-in=&quot;at 500 from bounceInDown use swing during 500&quot; data-slide-out=&quot;at 0 to fadeOutRight use swing during 1500 force&quot;&gt;Slide 1&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;&lt;span class=&quot;ani&quot; data-slide-in=&quot;at 500 from bounceInDown use swing during 500&quot; data-slide-out=&quot;at 0 to fadeOutRight use swing during 1500 force&quot;&gt;Slide 2&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;&lt;span class=&quot;ani&quot; data-slide-in=&quot;at 500 from bounceInDown use swing during 500&quot; data-slide-out=&quot;at 0 to fadeOutRight use swing during 1500 force&quot;&gt;Slide 3&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;script&gt;内：
+
+var mySwiper1 = new Swiper (&#39;.swiper-container&#39;, {
+    direction: &#39;vertical&#39;,//竖屏
+    on:{
+      init: function(){
+        swiperAnimateCache(this); //隐藏动画元素
+        swiperAnimate(this); //初始化完成开始动画
+      },
+      slideChangeTransitionEnd: function(){
+        swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+      }
+    }
+})
+
+/*
+at        后面跟的是     动画延迟时间
+from     后面跟的是    动画样式
+use       后面跟的是    动画力度
+during   后面跟的是    动画持续时间
+force     后面跟的是    是否使用 只有在出场动画的时候使用。进场动画无效。。
+*/
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><!--]--></div><footer class="page-meta"><!----><!----><!----></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="myBlogassets/app.06db0539.js" defer></script>
+  </body>
+</html>

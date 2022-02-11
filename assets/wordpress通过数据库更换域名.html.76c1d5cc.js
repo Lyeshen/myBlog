@@ -1,0 +1,6 @@
+import{d as e}from "./app.06db0539.js";import{_ as n}from "./plugin-vue_export-helper.21dcd24c.js";const s={},t=e(`<h1 id="wordpress\u901A\u8FC7\u6570\u636E\u5E93\u66F4\u6362\u57DF\u540D" tabindex="-1"><a class="header-anchor" href="#wordpress\u901A\u8FC7\u6570\u636E\u5E93\u66F4\u6362\u57DF\u540D" aria-hidden="true">#</a> wordpress\u901A\u8FC7\u6570\u636E\u5E93\u66F4\u6362\u57DF\u540D</h1><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>UPDATE wp_options SET option_value = replace( option_value, &#39;http://www.old.com&#39;, &#39;http://www.new.com&#39; ) WHERE option_name = &#39;home&#39; OR option_name = &#39;siteurl&#39;;
+
+UPDATE wp_posts SET post_content = replace( post_content, &#39;http://www.old.com&#39;, &#39;http://www.new.com&#39; ) ;
+
+UPDATE wp_posts SET guid = replace( guid, &#39;http://www.old.com&#39;, &#39;http://www.new.com&#39; ) ;
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>old\u4EE3\u8868\u65E7\u57DF\u540D\uFF0Cnew\u4EE3\u8868\u65B0\u57DF\u540D\u3002</p>`,3);function p(a,o){return t}var l=n(s,[["render",p]]);export{l as default};
