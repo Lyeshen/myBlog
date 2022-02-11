@@ -1,0 +1,5 @@
+<template><h1 id="移除wordpress页面的评论功能" tabindex="-1"><a class="header-anchor" href="#移除wordpress页面的评论功能" aria-hidden="true">#</a> 移除WordPress页面的评论功能</h1>
+<p>删除主题中相关模板的</p>
+<div class="language-php ext-php line-numbers-mode"><pre v-pre class="language-php"><code><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">comments_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">comments_template</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>类似的代码即可</p>
+</template>
